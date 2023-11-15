@@ -6,6 +6,7 @@
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
 const shopListShow= document.querySelector(".showList");
+const totalPrice = document.querySelector(".badge");
 let pList = '';
 products.forEach((val, index) => {
     pList += `
@@ -44,11 +45,11 @@ function addToCart(index){
         price:val.default_variant.price.selling_price.toLocaleString()
     })
     showListShop();
-
+    showPrice();
 }
 
 function showListShop() {
-    let helper;
+    let helper = '';
     shopList.forEach((value,index) =>{
         helper+= `<li><button onclick=removeCart(${index})>Remove</button><img style="height:60px" src="${value.image}"/><span>${value.price}" | "${value.title} </span></li>`
     })
@@ -58,4 +59,14 @@ function showListShop() {
 function removeCart (index) {
     shopList.splice(index , 1);
     showListShop()
+    showPrice();
 }
+function showPrice(){
+    let counter = 0;
+shopList.forEach(item =>{
+    console.log(item.price);
+    counter += +item.price.replaceAll(',', '')
+})
+totalPrice.innerHTML = counter;
+}
+showPrice();
