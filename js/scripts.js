@@ -30,15 +30,13 @@ products.forEach((val, index) => {
                         </div>
                     </div>`;
 })
-
 document.querySelector(".productList").innerHTML = pList;
 
 const shopList = [];
 function addToCart(index){
-   
     let val = products[index]
-    console.log(val);
-    console.log(index);
+    // console.log(val);
+    // console.log(index);
     shopList.push({
         title:val.title_fa,
         image:val.images.main.url[0],
@@ -47,14 +45,12 @@ function addToCart(index){
     showListShop();
     showPrice();
 }
-
 function showListShop() {
     let helper = '';
     shopList.forEach((value,index) =>{
         helper+= `<li><button onclick=removeCart(${index})>Remove</button><img style="height:60px" src="${value.image}"/><span>${value.price}" | "${value.title} </span></li>`
     })
     shopListShow.innerHTML = helper;
-
 }
 function removeCart (index) {
     shopList.splice(index , 1);
@@ -63,8 +59,8 @@ function removeCart (index) {
 }
 function showPrice(){
     let counter = 0;
-shopList.forEach(item =>{
-    console.log(item.price);
+    shopList.forEach(item =>{
+    // console.log(item.price);
     counter += +item.price.replaceAll(',', '')
 })
 totalPrice.innerHTML = counter;
