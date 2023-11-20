@@ -25,7 +25,7 @@ products.forEach((val, index) => {
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><button class="btn btn-primary" onclick="addToCart(${index})" >shop it</button></div>
+                                <div class="text-center"><button class="btn btn-primary" onclick="addToCart(${index})" >Add to Cart</button></div>
                             </div>
                         </div>
                     </div>`;
@@ -63,6 +63,6 @@ function showPrice(){
     // console.log(item.price);
     counter += +item.price.replaceAll(',', '')
 })
-totalPrice.innerHTML = counter;
+totalPrice.innerHTML = counter.toLocaleString();
 }
 showPrice();
